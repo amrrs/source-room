@@ -44,6 +44,8 @@ This is a working application, not a simulated chat. It opens without credential
 Requires **Python 3.12+, uv, and Node.js 22+**. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) if needed.
 
 ```bash
+git clone https://github.com/amrrs/source-room.git
+cd source-room
 cp .env.example .env
 ```
 
@@ -247,11 +249,11 @@ Completed checks are recorded in [docs/live-test-results.json](docs/live-test-re
 
 Tavily Extract could not fetch `https://docs.tavily.com/documentation/api-reference/endpoint/search` during testing, although the public Nebius media-kit page extracted successfully. Individual URLs can fail independently of API authentication.
 
-Cloud deployment is still unverified. The Docker image was not built locally because Docker was unavailable; the production frontend and Python runtime were tested separately.
+The [first GitHub Actions run](https://github.com/amrrs/source-room/actions/runs/34764989803) passed backend lint/tests, the frontend build, browser tests, the Docker image build, and a container startup health check. Railway/Render deployment is still unverified; no cloud service has been deployed.
 
 ## GitHub checks
 
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs backend lint/tests, the frontend build, Playwright browser tests, and a Docker build/startup health check on pushes and pull requests. Ordinary CI checks do not require provider secrets and do not call paid APIs. The workflow is configured; its first hosted run occurs after the repository is pushed.
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs backend lint/tests, the frontend build, Playwright browser tests, and a Docker build/startup health check on pushes and pull requests. Ordinary CI checks do not require provider secrets and do not call paid APIs. The [first hosted run passed](https://github.com/amrrs/source-room/actions/runs/34764989803).
 
 Dependency lockfiles, deployment configurations, screenshots, and both demo videos are included. `.env`, workspace data, installed dependencies, and generated test output remain ignored. Configure provider keys in your deployment environment, never in repository files.
 
