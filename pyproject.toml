@@ -1,0 +1,19 @@
+[project]
+name = "source-room"
+version = "0.1.0"
+description = "Chat with PDFs and websites using LangChain, Tavily, and Nebius Token Factory"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn[standard]>=0.34,<1", "python-multipart>=0.0.20,<1",
+  "langchain-openai>=1.0,<2", "langchain-text-splitters>=1.0,<2",
+  "tavily-python>=0.7,<1", "pypdf>=6,<7", "numpy>=2,<3", "python-dotenv>=1,<2"
+]
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2", "httpx>=0.28,<1", "ruff>=0.12,<1"]
+[tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "auto"
+[tool.ruff]
+line-length = 110
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

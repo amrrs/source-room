@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file: .env
+    environment:
+      DATA_DIR: /app/data
+      PORT: "8000"
+    volumes:
+      - source-room-data:/app/data
+    restart: unless-stopped
+volumes:
+  source-room-data:

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: source-room
+    runtime: docker
+    plan: 1c-2g
+    healthCheckPath: /api/health
+    disk:
+      name: source-room-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: NEBIUS_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: APP_ACCESS_TOKEN
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: DATA_DIR
+        value: /app/data

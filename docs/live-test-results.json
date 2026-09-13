@@ -1,0 +1,109 @@
+[
+  {
+    "test": "authenticated model catalog",
+    "status": "passed",
+    "models": 24
+  },
+  {
+    "test": "PDF parsing and live embeddings",
+    "status": "passed",
+    "model": "Qwen/Qwen3-Embedding-8B",
+    "chunks": 1
+  },
+  {
+    "test": "PDF grounded answer",
+    "status": "passed",
+    "model": "Qwen/Qwen3.5-397B-A17B",
+    "seconds": 5.9,
+    "answer": "\n\nThe Cedar pilot has 37 solar panels [1]. The project lead is Maya [1].",
+    "sources": [
+      {
+        "title": "cedar-pilot-smoke.pdf",
+        "url": "",
+        "page": 1
+      }
+    ]
+  },
+  {
+    "test": "Second chat model",
+    "status": "passed",
+    "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "seconds": 2.2,
+    "answer": "The Cedar pilot has 37 solar panels [1]. The project lead is Maya [1]. Each panel produces 410 watts [1].",
+    "sources": [
+      {
+        "title": "cedar-pilot-smoke.pdf",
+        "url": "",
+        "page": 1
+      }
+    ]
+  },
+  {
+    "test": "Tavily advanced extraction and Nebius indexing",
+    "status": "passed",
+    "chunks": 7
+  },
+  {
+    "test": "Website grounded answer",
+    "status": "passed",
+    "model": "Qwen/Qwen3.5-397B-A17B",
+    "seconds": 5.2,
+    "answer": "\n\nThe Nebius logo is available for download in **png**, **svg**, and **pdf** formats [1].",
+    "sources": [
+      {
+        "title": "nebius.com/media-kit",
+        "url": "https://nebius.com/media-kit",
+        "page": null
+      },
+      {
+        "title": "nebius.com/media-kit",
+        "url": "https://nebius.com/media-kit",
+        "page": null
+      },
+      {
+        "title": "nebius.com/media-kit",
+        "url": "https://nebius.com/media-kit",
+        "page": null
+      },
+      {
+        "title": "nebius.com/media-kit",
+        "url": "https://nebius.com/media-kit",
+        "page": null
+      },
+      {
+        "title": "nebius.com/media-kit",
+        "url": "https://nebius.com/media-kit",
+        "page": null
+      },
+      {
+        "title": "nebius.com/media-kit",
+        "url": "https://nebius.com/media-kit",
+        "page": null
+      }
+    ]
+  },
+  {
+    "test": "Live advanced web search with domain restriction",
+    "status": "passed",
+    "model": "Qwen/Qwen3.5-397B-A17B",
+    "seconds": 19.0,
+    "answer": "\n\nBased on the provided documentation, **Tavily's `advanced` search differs from `basic` search** primarily in coverage, latency, and relevance trade-offs:\n\n| Feature | Basic Search | Advanced Search |\n| :--- | :--- | :--- |\n| **Coverage** | Covers less ground; fewer sources per query [2]. | Searches more broadly; reaches more sources per query [2]. |\n| **Latency** | Medium (lower latency budget) [2]. | Higher (trade-off for relevance) [2]. |\n| **Relevance** | High [2]. | Highest [2]. |\n| **Content Type** | Returns reranked chunks (updated July 2026) [1][2]. | Returns reranked chunks [2]. |\n\n### Key Differences\n*   **Scope & Sources:** `advanced` search is designed to reach more sources and search more broadly, whereas `basic` covers less ground [2].\n*   **Performance:** `advanced` offers the highest relevance but comes with higher latency. `basic` is tuned for a lower latency budget while maintaining high relevance [2].\n*   **Content Output:** As of July 2026, both depths return **reranked chunks** (snippets). Previously, `basic` returned a single page summary per source [1][2]. The `chunks_per_source` parameter applies to both depths [1].\n*   **Recommended Use Cases:**\n    *   **Use `advanced` for:** Niche topics, very recently published pages, questions with several distinct facets, longer or detailed queries, and when seeking specific information [2].\n    *   **Use `basic` for:** General-purpose lookups, short/focused queries, and when a fast, query-aligned answer is sufficient [2].\n\n### Parameters\n*   Both modes support the `chunks_per_source` parameter to control the number of chunks returned per source [1].\n*   When using `auto_parameters`, the system may automatically set `search_depth` to `advanced` if likely to improve results, which uses 2 API credits per request [3].",
+    "sources": [
+      {
+        "title": "Changelog - Tavily Docs",
+        "url": "https://docs.tavily.com/changelog",
+        "page": null
+      },
+      {
+        "title": "Best Practices for Search - Tavily Docs",
+        "url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
+        "page": null
+      },
+      {
+        "title": "SDK Reference",
+        "url": "https://docs.tavily.com/sdk/javascript/reference",
+        "page": null
+      }
+    ]
+  }
+]

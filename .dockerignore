@@ -1,0 +1,17 @@
+.git
+.env
+.env.*
+.venv
+node_modules
+data
+dist
+tests
+test-results
+playwright-report
+__pycache__
+.pytest_cache
+.ruff_cache
+.hallmark
+*.tsbuildinfo
+docs
+.github
